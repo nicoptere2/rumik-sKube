@@ -1,1 +1,6 @@
+.classpath
+.project
+.settings/*
+leJOS_EV3_0.9.1-beta/*
+myobject.data
 /bin/
