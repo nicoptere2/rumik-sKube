@@ -12,42 +12,44 @@ public class OpticSensor {
 	float[] sample;
 	
 	public OpticSensor() {
-		opticSensor = new EV3ColorSensor(LocalEV3.get().getPort("S1"));
-		//opticSensor.getColorID();
-		
-		sample = new float[6];
+		opticSensor = new EV3ColorSensor(LocalEV3.get().getPort("S2"));
+
+		sample = new float[3];
 		colorSampler = opticSensor.getRGBMode();
-		
-		try {
-		    Thread.sleep(1000);                 //1000 milliseconds is one second.
-		} catch(InterruptedException ex) {
-		    Thread.currentThread().interrupt();
-		}
-		
+		//opticSensor.setFloodlight(false);
 	}
 	
-	public float[] readColor() {
-		if(opticSensor.getFloodlight() != Color.WHITE)
-			this.opticSensor.setFloodlight(Color.WHITE);
-			
-		
-		try {
-		    Thread.sleep(1000);                 //1000 milliseconds is one second.
-		} catch(InterruptedException ex) {
-		    Thread.currentThread().interrupt();
-		}
+	public void initSensor(){
+		colorSampler = opticSensor.getRGBMode();
+		//opticSensor.setFloodlight(true);
+		//if(opticSensor.getFloodlight() != Color.WHITE)
+		//	this.opticSensor.setFloodlight(Color.WHITE);
+	}
+	
+	public void shutdown() {
+		//opticSensor.setFloodlight(false);
+	}
+	
+	public int[] readColor() {
+		colorSampler = opticSensor.getRGBMode();
 		colorSampler.fetchSample(sample, 0);
-		//this.opticSensor.setFloodlight(false);
 		return normalizeColor(sample);
 	}
 	
-	private float[] normalizeColor(float [] sample) {
-		sample[0] *= 100;
-		sample[1] *= 100;
-		sample[2] *= 100;
-		sample[4] *= 100;
-		sample[5] *= 100;
+	private int[] normalizeColor(float [] sample) {
+		int[] ret = new int[3];
+		for(int i=0; i<3; i++)
+			ret[i] = (int)(sample[i] * 255);
 
-		return sample;
+		return ret;
+	}
+	
+	public String sampleToString(float[] sample) {
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		s.append(sample[0] + ", ");
+		s.append(sample[1] + ", ");
+		s.append(sample[2] + "]");
+		return s.toString();
 	}
 }

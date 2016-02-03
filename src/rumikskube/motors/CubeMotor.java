@@ -12,19 +12,19 @@ public class CubeMotor {
 		float pos1 = motor.getPosition();
 		System.out.println("position 1: "+ String.valueOf(pos1));
 		
-		motor.setSpeed(100);
+		motor.setSpeed(300);
 		float speed = motor.getSpeed();
 		System.out.println("speed = " + String.valueOf(speed));
 		
 		float pos2;
-		motor.rotate(nominalRotation + 35);
+		motor.rotate(nominalRotation * 90 + 40);
 		pos2 = motor.getPosition();
 		System.out.println("position 2: "+ String.valueOf(pos2));
 	}
 	
 	public void rotateSide(){
 		this.rotate();
-		this.setRotation(-35);
+		this.setRotation(-40);
 	}
 	
 	public void setRotation(int rotation){
@@ -32,6 +32,7 @@ public class CubeMotor {
 	}
 	
 	public void rotate(int angle) {
+		motor.setSpeed(200);
 		motor.rotate(nominalRotation * angle);
 	}
 }

@@ -27,11 +27,11 @@ public class ColorMotor {
 	}
 	
 	public void goCorner() {
-		motor.rotate(50);
+		motor.rotate(45);
 	}
 	
 	public void goOuterFromCorner() {
-	 	motor.rotate(-50);
+	 	motor.rotate(-45);
 	}
 	
 	public void goNominal() {
