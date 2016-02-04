@@ -11,74 +11,53 @@ import java.io.Serializable;
 public class Cube implements Serializable {
 	
 	public static final int Front = 0,
-							Right = 1,
+							Down = 1,
 							Back = 2,
-							Left = 3,
-							Down = 4,
-							Up = 5;
+							Up = 3,
+							Left = 4,
+							Right = 5;
 	
 	
-	public Face front, back, left, right, up, down;
 
+	public static final int nbFaces = 6;
+	public Face[] faces;
+	
+	
 	public Cube(){		
+		faces = new Face[6];
 	}
 
+	
 	public void setFace(int i, Face f){
-		switch(i){
-		case Front:
-			front = f;
-			break;
-		case Back:
-			back = f;
-			break;
-		case Left:
-			left = f;
-			break;
-		case Right:
-			right = f;
-			break;
-		case Up:
-			up = f;
-			break;
-		case Down:
-			down = f;
-			break;
-		default:
-			System.out.println("erreur");
-		}
+		faces[i] = f;
 	}
 
 	@Override
-	public Cube clone() throws CloneNotSupportedException {
+	public Cube clone() {
 		Cube r = new Cube();
-		r.front = front.clone();
-		r.back = back.clone();
-		r.left = left.clone();
-		r.right = left.clone();
-		r.up = up.clone();
-		r.down = down.clone();
+		for(int i = 0 ; i < nbFaces ; i++){
+			r.faces[i] = faces[i].clone();
+		}
 		return r;
 	}
 	
-	
+	public boolean isSolved(){
+		for(int i = 0 ;  i < 6 ; i++){
+			if( ! faces[i].isComplete()){
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	
 	
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append(front);
-		s.append("\n");
-		s.append(back);
-		s.append("\n");
-		s.append(left);
-		s.append("\n");
-		s.append(right);
-		s.append("\n");
-		s.append(up);
-		s.append("\n");
-		s.append(down);
-		s.append("\n");
+		for(int i = 0 ; i < nbFaces ; i++){
+			s.append(faces[i] + "\n");
+		}
 		return s.toString();
 	}	
 	
@@ -87,28 +66,16 @@ public class Cube implements Serializable {
 	
 	
 	public void serialize() throws IOException {
-		// Write to disk with FileOutputStream
 		FileOutputStream f_out = new FileOutputStream(serPath);
-
-		// Write object with ObjectOutputStream
 		ObjectOutputStream obj_out = new ObjectOutputStream(f_out);
-
-		// Write object out to disk
 		obj_out.writeObject(this);
 	}
 	
 	public static Cube restore() throws Exception {
-		// Read from disk using FileInputStream
 		FileInputStream f_in = new FileInputStream(serPath);
-
-		// Read object using ObjectInputStream
 		ObjectInputStream obj_in = new ObjectInputStream (f_in);
-
-		// Read an object
 		Object obj = obj_in.readObject();
-
 		obj_in.close();
-		
 		if (obj instanceof Cube)
 			return (Cube) obj;
 		else

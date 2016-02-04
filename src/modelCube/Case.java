@@ -5,9 +5,13 @@ import java.awt.Color;
 public class Case {
 
 	public Color colour;
+	enum Groups{ NotFoundYet, G1, G2, G3, G4, G5, G6};
 	
+	
+	public Groups colourGroup;
 	public Case(Color c){
 		colour = c;
+		colourGroup = Groups.NotFoundYet;
 	}
 	
 	
