@@ -10,7 +10,7 @@ import kube.Kube;
 public class Client extends JFrame{
 	
 	public Client() {
-		super("Rumik's kube");
+		super("Rubik's cube");
 		this.setPreferredSize(new Dimension(1000, 700)) ;
 		
 		Kube kube = null;
