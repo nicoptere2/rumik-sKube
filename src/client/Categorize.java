@@ -98,8 +98,8 @@ public class Categorize {
 				}
 			}
 		}
-		System.out.println("fjkdslaéfhjdkséahfjdkslahfjdkséhafjkdéshak");
-		fuckof();
+		if(!redond)
+			fuckof();
 		
 	}
 	
