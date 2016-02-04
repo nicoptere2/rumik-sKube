@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.util.Pair;
-import kube.Kube;
 import modelCube.Cube;
+import modelCube.Face;
 
 public class Solver {
 
@@ -43,7 +43,7 @@ public class Solver {
 		//TODO
 	}
 
-	static Kube tmp;
+	static Cube tmp;
 	static List<String> tmpL;
 	private static List<String> iterate( Pair<Cube, List<String>>[] memory){
 
@@ -53,7 +53,7 @@ public class Solver {
 				tmpL = memory[i].getValue();
 				tmpL.add(p);
 				memory[i] = new Pair(tmp, tmpL);
-				if(isSolved(tmp)){
+				if(tmp.isSolved()){
 					return tmpL;
 				}
 			}
@@ -64,50 +64,47 @@ public class Solver {
 	
 	private static Cube permutation(Cube c, String p){
 		Cube cube = c.clone();
-		
-		//on doit mettre la face à tourne ? je ne sais pas où :(
+		Face f = null;
 		if(p.startsWith("Front")){
-			
+			f = cube.front;
 		}
 		else if(p.startsWith("Back")){
-			
+			f = cube.back;
 		}
 		else if(p.startsWith("Up")){
-			
+			f = cube.up;
 		}
 		else if(p.startsWith("Down")){
-			
+			f = cube.down;
 		}
 		else if(p.startsWith("Left")){
-			
+			f = cube.left;
 		}
 		else if(p.startsWith("Right")){
-			
+			f = cube.right;
 		}
 		else{
 			System.out.println("Houston on a un problème: la permutation " + p + " n'est pas gérée");
 		}
-	
-		if(p.endsWith("P")){
-			//rotation à 90 dans le sens inverse des aiguilles d'une montre
-			//cube.rotateSide();
+		if(f != null){
+			if(p.endsWith("P")){
+				f.rotation(false);
+			}
+			else if(p.endsWith("2")){
+				f.rotation(true);
+				f.rotation(true);
+				
+			}
+			else{
+				f.rotation(true);
+			}
 		}
-		else if(p.endsWith("2")){
-			//rotation à 180
-			
-		}
-		else{
-			//rotation à 90
-			
-		}
-		
+		return cube;
 		
 		
 	}
 	
-	private static boolean isSolved(Kube c){//TODO: à déplacer dans "Kube" (putain mais quel nom débile bordel), mais pour l'instant il reste là parce que je sens poindre les conflits git :)
-		return false;//TODOTODOTDODTOTODTODTODOTDOTDOTDTD
-	}
+
 	
 	
 }

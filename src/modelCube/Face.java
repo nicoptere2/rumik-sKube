@@ -53,7 +53,7 @@ public class Face {
 	
 	
 	@Override
-	protected Face clone() throws CloneNotSupportedException {
+	protected Face clone() {
 		Face f = new Face();
 		for(int i = 0 ; i < 3 ; i++){
 			f.setColumn(i, getColumn(i));

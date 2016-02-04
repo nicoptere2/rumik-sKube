@@ -67,12 +67,13 @@ public class Systeme {
 		Cube cube = new Cube();
 		for(int i = Cube.Front ; i < 6 ; i++){
 			
-			if( i < Cube.Up ){//on fait toutes les faces horizontales
+			if( i < Cube.Left ){//on fait toutes les faces horizontales
 				cube.setFace(i, scanFace());
-				cubeMotor.rotate(90);
+				armMotor.rotateCube();
 			} 
 			else {
-				if(i == Cube.Down) {
+				if(i == Cube.Left) {
+					cubeMotor.rotate(-90);
 					armMotor.rotateCube();
 				}			
 				else {
