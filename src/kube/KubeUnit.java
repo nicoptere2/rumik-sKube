@@ -69,7 +69,6 @@ public class KubeUnit implements Serializable, Comparable<KubeUnit>{
 
 	public int setCateg(int categ) {
 		if(this.categ != 0){
-			System.out.println("il y a de la redondance pour la catgorie " + this.categ);
 			this.categ = categ;
 			return this.categ;
 		}

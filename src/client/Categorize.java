@@ -86,7 +86,6 @@ public class Categorize {
 					iRedond = categ[nbCateg].indexOf(categ[m].get(i).setCateg(m+1));
 					if(iRedond <=0) continue;
 					value1 = categ[m].get(i).dist(categ[m].get(0));
-					System.out.println("nbcateg" + iRedond);
 					value2 = categ[nbCateg].get(iRedond).dist(categ[nbCateg].get(0));
 					
 					if(value1 < value2)
@@ -98,6 +97,8 @@ public class Categorize {
 				}
 			}
 		}
+		for(int i=0; i<6; i++)
+			clean(categ[i],9);
 		if(!redond)
 			fuckof();
 		
@@ -105,29 +106,31 @@ public class Categorize {
 	
 	private void fuckof() {
 		ArrayList<KubeUnit> lonely = new ArrayList<KubeUnit>();
+		boolean contained = false;
 		for(KubeSide ks: kube) {
 			for(KubeUnit ku: ks) {
-				for(int iCateg=0; iCateg<6; iCateg++) {
-					if(!categ[iCateg].contains(ku))
-						lonely.add(ku);
+				if(ku.getCateg() == 0)
+					lonely.add(ku);
+			}
+		}
+		System.out.println("coucou" +lonely.size());
+		if(lonely.size() > 0){
+			int iMin=0;
+			float value1;
+			float value2;
+			
+			for(KubeUnit ku: lonely) {
+				for(int iCateg=0; iCateg<6; iCateg++){
+					value1= categ[iCateg].get(0).dist(ku);
+					value2= categ[iMin].get(0).dist(ku);
+					if(value1 < value2)
+						iMin = iCateg;
 				}
+				categ[iMin].add(ku);
+				ku.setCateg(iMin+1);
 			}
+			//fuckof();
 		}
-		System.out.println("coucou" +lonely);
-		
-		int iMin=0;
-		float value1;
-		float value2;
-		for(KubeUnit ku: lonely) {
-			for(int iCateg=0; iCateg<6; iCateg++){
-				value1= categ[iCateg].get(0).dist(ku);
-				value2= categ[iMin].get(0).dist(ku);
-				if(value1 < value2)
-					iMin = iCateg;
-			}
-			ku.setCateg(iMin+1);
-		}
-		
 	}
 
 

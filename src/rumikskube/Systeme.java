@@ -127,7 +127,7 @@ public class Systeme {
 			System.out.println("Couleur : " + sampleToString(sample));
 			
 			try {
-			    Thread.sleep(100);                 //1000 milliseconds is one second. (bravo)
+			    Thread.sleep(1000);                 //1000 milliseconds is one second. (bravo)
 			} catch(InterruptedException ex) {
 			    Thread.currentThread().interrupt();
 			}
