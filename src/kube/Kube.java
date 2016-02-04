@@ -39,6 +39,10 @@ public class Kube implements Iterable<KubeSide>, Serializable{
 		for(KubeSide kubeSide: this.kube)
 			kubeSide.lighten(saturation);
 	}
+	
+	public KubeSide getSide(int i) {
+		return this.kube.get(i);
+	}
 
 	@Override
 	public Iterator<KubeSide> iterator() {
@@ -83,5 +87,7 @@ public class Kube implements Iterable<KubeSide>, Serializable{
 		else
 			throw new Exception("Objet inconnu");
 	}
+
+	
 	
 }

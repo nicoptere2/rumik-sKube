@@ -29,6 +29,9 @@ public class Client extends JFrame{
         
         kube.lighten((float)0.40);
         kube.sature((float)1);
+        
+         Categorize categorize = new Categorize(kube);
+         categorize.execute();
 
         
         ViewKube viewKube= new ViewKube(kube);
@@ -37,6 +40,7 @@ public class Client extends JFrame{
         pack();
         setVisible(true);    
 	}
+	
 
 	public static void main(String[] args) {
 		new Client();
