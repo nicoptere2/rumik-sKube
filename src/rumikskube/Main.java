@@ -3,10 +3,6 @@ import java.io.IOException;
 import java.util.Random;
 
 import kube.Kube;
-import lejos.hardware.motor.Motor;
-import lejos.hardware.motor.NXTRegulatedMotor;
-import rumikskube.motors.ArmMotor;
-import rumikskube.motors.CubeMotor;
 
 public class Main {
 	
@@ -22,7 +18,7 @@ public class Main {
 		
 		//ColorMotor cm= new ColorMotor(); 
 		
-		robot.scan();
+		robot.scanBis();
 		/*
 		for(i=0; i<10; i++){
 			for(j=0; j<rand.nextInt()%4; j++)
