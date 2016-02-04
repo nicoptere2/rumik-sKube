@@ -90,7 +90,7 @@ public class Solver {
 	
 		if(p.endsWith("P")){
 			//rotation à 90 dans le sens inverse des aiguilles d'une montre
-			cube.rotateSide();
+			//cube.rotateSide();
 		}
 		else if(p.endsWith("2")){
 			//rotation à 180
@@ -106,7 +106,7 @@ public class Solver {
 	}
 	
 	private static boolean isSolved(Kube c){//TODO: à déplacer dans "Kube" (putain mais quel nom débile bordel), mais pour l'instant il reste là parce que je sens poindre les conflits git :)
-		
+		return false;//TODO: TODOTDODTOTODTODTODOTDOTDOTDTD
 	}
 	
 	
