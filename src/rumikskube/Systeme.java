@@ -4,6 +4,7 @@ import java.awt.Color;
 import kube.Kube;
 import kube.KubeSide;
 import modelCube.Case;
+import modelCube.Case.Position;
 import modelCube.Cube;
 import modelCube.Face;
 import rumikskube.motors.ArmMotor;
@@ -88,8 +89,8 @@ public class Systeme {
 		return cube;
 	}
 	
-	public Case sampleToCase(int[] sample){
-		return new Case(new Color(sample[0], sample[1], sample[2]));
+	public Case sampleToCase(int[] sample, Position p){
+		return new Case(new Color(sample[0], sample[1], sample[2]), p);
 	}
 	
 	public Face scanFace(){
@@ -100,7 +101,7 @@ public class Systeme {
 		colorMotor.goCenter();
 		
 		sample = opticSensor.readColor();
-		f.cases[0][0] = sampleToCase(sample);
+		f.cases[0][0] = sampleToCase(sample, Position.Center);
 		System.out.println("Couleur : " + sampleToString(sample));
 		
 	
@@ -108,7 +109,7 @@ public class Systeme {
 			if( i == 1){
 				colorMotor.goOuterCase();
 				sample = opticSensor.readColor();
-				f.setMiddle(0,  sampleToCase(sample));	
+				f.setMiddle(0,  sampleToCase(sample, Position.Middle));	
 			}
 			else{
 
@@ -116,13 +117,13 @@ public class Systeme {
 				if( i%2 == 0){
 					colorMotor.goCorner();
 					sample = opticSensor.readColor();
-					f.setCorner((i-1)/2, sampleToCase(sample));
+					f.setCorner((i-1)/2, sampleToCase(sample, Position.Corner));
 				
 				}
 				else{
 					colorMotor.goOuterFromCorner();
 					sample = opticSensor.readColor();
-					f.setMiddle((i-1)/2, sampleToCase(sample));
+					f.setMiddle((i-1)/2, sampleToCase(sample, Position.Middle));
 				}	
 			}			
 			System.out.println("Couleur : " + sampleToString(sample));

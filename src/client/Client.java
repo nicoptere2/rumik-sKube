@@ -4,36 +4,48 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import client.view.ViewKube;
-import kube.Kube;
+import client.view.Cube.ViewCube;
+import modelCube.Cube;
 
 public class Client extends JFrame{
 	
 	public Client() {
 		super("Rubik's cube");
 		this.setPreferredSize(new Dimension(1000, 700)) ;
-		
-		Kube kube = null;
+		/*
+		Kube cube = null;
 		try {
-			kube = Kube.restore();
+			cube = Kube.restore();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
 		System.out.println("Ca a marché");
-		System.out.println(kube);
+		System.out.println(cube);
 		
 		
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        kube.lighten((float)0.40);
-        kube.sature((float)1);
+        cube.lighten((float)1);
+        cube.sature((float)1);
 
         
-        ViewKube viewKube= new ViewKube(kube);
+        
+        ViewKube viewKube= new ViewKube(cube);
         this.add(viewKube);
-
+		*/
+		
+		try{
+			Cube cube = Cube.restore();
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+	        //cube.lighten((float)1);
+	        //cube.sature((float)1);
+	        Solver.sort(cube);
+	        ViewCube viewKube= new ViewCube(cube);
+	        this.add(viewKube);
+		}
+		catch(Exception e){}
+		
         pack();
         setVisible(true);    
 	}
