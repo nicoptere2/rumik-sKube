@@ -1,9 +1,15 @@
 package modelCube;
 
+import java.io.Serializable;
+
 import modelCube.Case.Groups;
 
-public class Face {
+public class Face implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1786757124353456312L;
 	public Case[][] cases;
 	Face[] neighboors;
 	
@@ -33,8 +39,8 @@ public class Face {
 
 	/**
 	 * 
-	 * @param i de 0 à 3 inclus
-	 * @return le coin numéro i clockwise
+	 * @param i de 0 ï¿½ 3 inclus
+	 * @return le coin numï¿½ro i clockwise
 	 */
 	public Case getCorner(int i){
 		switch(i){
@@ -47,7 +53,7 @@ public class Face {
 		case 3:
 			return cases[2][2];
 		default:
-			System.out.println("valeur de 1 à 4 bordel");
+			System.out.println("valeur de 1 ï¿½ 4 bordel");
 			return getCenter();
 
 		}
@@ -64,8 +70,8 @@ public class Face {
 	}
 	/**
 	 * 
-	 * @param i de 0 à 3 inclus
-	 * @return la case du milieu numéro i clockwise
+	 * @param i de 0 ï¿½ 3 inclus
+	 * @return la case du milieu numï¿½ro i clockwise
 	 */
 	public Case getMiddleCase(int i){
 		switch(i){
@@ -78,7 +84,7 @@ public class Face {
 		case 3:
 			return cases[2][1];
 		default:
-			System.out.println("valeur de 1 à 4 bordel");
+			System.out.println("valeur de 1 ï¿½ 4 bordel");
 			return getCenter();
 
 		}
@@ -86,7 +92,7 @@ public class Face {
 
 	/**
 	 * 
-	 * @return true si tout est de la même couleur
+	 * @return true si tout est de la mï¿½me couleur
 	 */
 	public boolean isComplete(){
 		Groups ref = cases[0][0].groupColour;
@@ -103,7 +109,7 @@ public class Face {
 	
 	/**
 	 * 
-	 * @param i le numéro du coin dans le sens de lecture !!!!!
+	 * @param i le numï¿½ro du coin dans le sens de lecture !!!!!
 	 */
 	public void setMiddle(int i, Case c ){
 		switch(i){
@@ -124,7 +130,7 @@ public class Face {
 	
 	/**
 	 * 
-	 * @param i le numéro du coin dans le sens de lecture !!!!!
+	 * @param i le numï¿½ro du coin dans le sens de lecture !!!!!
 	 */
 	public void setCorner(int i, Case c ){
 		switch(i){
@@ -145,8 +151,8 @@ public class Face {
 	
 	/**
 	 * 
-	 * @param i de 0 à 2
-	 * @return la ligne numéro i
+	 * @param i de 0 ï¿½ 2
+	 * @return la ligne numï¿½ro i
 	 */
 	public Case[] getLine(int i){
 		Case[] ret = new Case[3];
@@ -159,8 +165,8 @@ public class Face {
 	
 	/**
 	 * 
-	 * @param i de 0 à 2
-	 * @return la colonne numéro i
+	 * @param i de 0 ï¿½ 2
+	 * @return la colonne numï¿½ro i
 	 */
 	public Case[] getColumn(int i){
 		Case[] ret = new Case[3];

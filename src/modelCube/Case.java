@@ -1,9 +1,14 @@
 package modelCube;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public class Case {
+public class Case implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4797176804641749206L;
 	public Color colour;
 	enum Groups{ NotFoundYet, G1, G2, G3, G4, G5, G6};
 	

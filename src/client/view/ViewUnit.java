@@ -55,7 +55,7 @@ public class ViewUnit extends BufferedImage{
     private void dessinerCase() {
         carre.setPaint(this.kubeUnit.getColor()) ;
         
-        carre.setPaint(Color.BLACK) ;
+        //carre.setPaint(Color.BLACK) ;
    
         carre.fillRect(0, 0, WIDTH, WIDTH) ;
         

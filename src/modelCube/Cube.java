@@ -10,6 +10,13 @@ import java.io.Serializable;
 
 public class Cube implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3523000172171699926L;
+
+
+
 	public static final int Front = 0,
 							Down = 1,
 							Back = 2,
