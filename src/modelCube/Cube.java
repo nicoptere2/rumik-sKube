@@ -49,7 +49,7 @@ public class Cube implements Serializable {
 	}
 
 	@Override
-	protected Cube clone() throws CloneNotSupportedException {
+	public Cube clone() throws CloneNotSupportedException {
 		Cube r = new Cube();
 		r.front = front.clone();
 		r.back = back.clone();

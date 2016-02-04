@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import kube.Kube;
+import modelCube.Cube;
 
 public class Main {
 	
@@ -18,7 +19,7 @@ public class Main {
 		
 		//ColorMotor cm= new ColorMotor(); 
 		
-		robot.scanBis();
+		Cube cube = robot.scanBis();
 		/*
 		for(i=0; i<10; i++){
 			for(j=0; j<rand.nextInt()%4; j++)
@@ -29,7 +30,8 @@ public class Main {
 		}
 		*/
 		try {
-			kube.serialize();
+			//kube.serialize();
+			cube.serialize();
 		} catch (IOException e) {
 			System.out.println("Ca n'a pas marché");
 			e.printStackTrace();

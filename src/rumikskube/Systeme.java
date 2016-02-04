@@ -63,7 +63,7 @@ public class Systeme {
 		}
 	}
 	
-	public void scanBis(){
+	public Cube scanBis(){
 		Cube cube = new Cube();
 		for(int i = Cube.Front ; i < 6 ; i++){
 			
@@ -83,6 +83,8 @@ public class Systeme {
 			}
 			
 		}
+		armMotor.rotateCube();//on remet front en face
+		return cube;
 	}
 	
 	public Case sampleToCase(int[] sample){
