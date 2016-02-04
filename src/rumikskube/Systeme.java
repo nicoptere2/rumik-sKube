@@ -104,11 +104,11 @@ public class Systeme {
 		
 	
 		for(int i = 1 ; i < 9 ; i++){
-			cubeMotor.rotate(45);
 			if( i == 1){
 				colorMotor.goOuterCase();
 				sample = opticSensor.readColor();
-				f.setMiddle(0,  sampleToCase(sample));				
+				f.setMiddle(0,  sampleToCase(sample));	
+				cubeMotor.rotate(45);			
 			}
 			if( i%2 == 0){
 				colorMotor.goCorner();
