@@ -8,8 +8,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 
+
 public class Cube implements Serializable {
 	
+
 	/**
 	 * 
 	 */
@@ -58,6 +60,18 @@ public class Cube implements Serializable {
 	}
 	
 	
+
+	public void lighten(float light) {
+		for(int i = 0 ; i < nbFaces ; i++)
+			faces[i].lighten(light);
+	}
+	
+	public void sature(float saturation) {
+		for(int i = 0 ; i < nbFaces ; i++)
+			faces[i].sature(saturation);
+	}
+	
+	
 	
 	@Override
 	public String toString() {
@@ -76,6 +90,7 @@ public class Cube implements Serializable {
 		FileOutputStream f_out = new FileOutputStream(serPath);
 		ObjectOutputStream obj_out = new ObjectOutputStream(f_out);
 		obj_out.writeObject(this);
+		obj_out.close();
 	}
 	
 	public static Cube restore() throws Exception {

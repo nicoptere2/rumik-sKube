@@ -10,16 +10,21 @@ public class Case implements Serializable{
 	 */
 	private static final long serialVersionUID = -4797176804641749206L;
 	public Color colour;
-	enum Groups{ NotFoundYet, G1, G2, G3, G4, G5, G6};
-	
-	
+	public enum Groups{ NotFoundYet , G1 , G2 , G3 , G4 , G5 , G6 };
+	public static final Groups[] groups = { Groups.G1, Groups.G2, Groups.G3, Groups.G4, Groups.G5, Groups.G6};
+	public enum Position {Center, Middle, Corner};
 	public Groups groupColour;
-	public Case(Color c){
+	public Position position;
+	
+	public Case(Color c, Position p){
 		colour = c;
+		position = p;
 		groupColour = Groups.NotFoundYet;
 	}
 	
-	
+	public float absoluteHue(){
+		return Color.RGBtoHSB(colour.getRed(), colour.getGreen(), colour.getBlue(), null)[0];
+	}
 	public void lighten(float light) {
 		float[] hsb = new float[3];
 		Color.RGBtoHSB(this.colour.getRed(), this.colour.getGreen(), this.colour.getBlue(), hsb);

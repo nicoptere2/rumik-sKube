@@ -1,6 +1,9 @@
 package modelCube;
 
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import modelCube.Case.Groups;
 
@@ -13,7 +16,6 @@ public class Face implements Serializable{
 	public Case[][] cases;
 	Face[] neighboors;
 	
-	
 	public Face(){
 		cases = new Case[3][3];
 		neighboors = new Face[4];
@@ -21,6 +23,21 @@ public class Face implements Serializable{
 	
 	public Case getCenter(){
 		return cases[1][1];
+	}
+	
+	/**
+	 * 
+	 * @return les cases sous forme de liste pour it�rer plus facilement dessus
+	 */
+	public List<Case> getListCases(){
+
+		List<Case> casesL = new ArrayList<>();
+		for(int i = 0 ; i < 3 ; i++){
+			for(int j = 0 ; j < 3 ; j++){
+				casesL.add(cases[i][j]);
+			}
+		}
+		return casesL;
 	}
 	
 	@Override
@@ -106,6 +123,20 @@ public class Face implements Serializable{
 		return true;
 	}
 
+	
+	public void lighten(float light) {
+		for(int i = 0 ; i < 3; i++)
+			for(int j = 0 ; j < 3 ; j++)
+				cases[i][j].lighten(light);
+	}
+	
+	public void sature(float saturation) {
+		for(int i = 0 ; i < 3; i++)
+			for(int j = 0 ; j < 3 ; j++)
+				cases[i][j].sature(saturation);
+	}
+
+	
 	
 	/**
 	 * 
