@@ -1,5 +1,7 @@
 package modelCube;
 
+import modelCube.Case.Groups;
+
 public class Face {
 
 	public Case[][] cases;
@@ -82,6 +84,21 @@ public class Face {
 		}
 	}
 
+	/**
+	 * 
+	 * @return true si tout est de la même couleur
+	 */
+	public boolean isComplete(){
+		Groups ref = cases[0][0].groupColour;
+		for(int i = 0 ; i < 3; i++){
+			for(int j = 0 ; j < 3 ; j++){
+				if(cases[i][j].groupColour != ref){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	
 	/**

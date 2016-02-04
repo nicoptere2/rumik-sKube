@@ -8,10 +8,10 @@ public class Case {
 	enum Groups{ NotFoundYet, G1, G2, G3, G4, G5, G6};
 	
 	
-	public Groups colourGroup;
+	public Groups groupColour;
 	public Case(Color c){
 		colour = c;
-		colourGroup = Groups.NotFoundYet;
+		groupColour = Groups.NotFoundYet;
 	}
 	
 	
