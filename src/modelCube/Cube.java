@@ -33,7 +33,9 @@ public class Cube implements Serializable {
 	
 	
 	public Cube(){		
-		faces = new Face[6];
+ 		faces = new Face[6];
+ 		for(int i=0; i<6; i++)
+ 			faces[i] = new Face();
 	}
 
 	
@@ -91,6 +93,7 @@ public class Cube implements Serializable {
 		ObjectOutputStream obj_out = new ObjectOutputStream(f_out);
 		obj_out.writeObject(this);
 		obj_out.close();
+		f_out.close();
 	}
 	
 	public static Cube restore() throws Exception {
@@ -98,6 +101,7 @@ public class Cube implements Serializable {
 		ObjectInputStream obj_in = new ObjectInputStream (f_in);
 		Object obj = obj_in.readObject();
 		obj_in.close();
+		f_in.close();
 		if (obj instanceof Cube)
 			return (Cube) obj;
 		else

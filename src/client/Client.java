@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import client.view.ViewKube;
+import client.view.Cube.ViewCube;
 import kube.Kube;
 import modelCube.Cube;
+import solver.Solver;
 
 public class Client extends JFrame{
 	
@@ -14,7 +16,7 @@ public class Client extends JFrame{
 		super("Rubik's cube");
 		this.setPreferredSize(new Dimension(1000, 700)) ;
 
-		Kube cube = null;
+		/*Kube cube = null;
 		try {
 			cube = Kube.restore();
 		} catch (Exception e) {
@@ -32,7 +34,7 @@ public class Client extends JFrame{
         
          Categorize categorize = new Categorize(kube);
          categorize.execute();
-         */
+         
 
         cube.lighten((float)1);
         cube.sature((float)1);
@@ -42,18 +44,21 @@ public class Client extends JFrame{
         
         ViewKube viewKube= new ViewKube(cube);
         this.add(viewKube);
-		
+		*/
 		
 		try{
 			Cube cube = Cube.restore();
+			System.out.println(cube);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
 	        //cube.lighten((float)1);
 	        //cube.sature((float)1);
-	        Solver.sort(cube);
-	        ViewCube viewKube= new ViewCube(cube);
-	        this.add(viewKube);
+	        //Solver.sort(cube);
+	        ViewCube viewKube1= new ViewCube(cube);
+	        this.add(viewKube1);
 		}
-		catch(Exception e){}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		
         pack();
         setVisible(true);    
