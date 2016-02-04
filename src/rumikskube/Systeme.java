@@ -104,24 +104,26 @@ public class Systeme {
 		
 	
 		for(int i = 1 ; i < 9 ; i++){
-			cubeMotor.rotate(45);
 			if( i == 1){
 				colorMotor.goOuterCase();
 				sample = opticSensor.readColor();
-				f.setMiddle(0,  sampleToCase(sample));				
-			}
-			if( i%2 == 0){
-				colorMotor.goCorner();
-				sample = opticSensor.readColor();
-				f.setCorner((i-1)/2, sampleToCase(sample));
-			
+				f.setMiddle(0,  sampleToCase(sample));	
 			}
 			else{
-				colorMotor.goOuterFromCorner();
-				sample = opticSensor.readColor();
-				f.setMiddle((i-1)/2, sampleToCase(sample));
-			}
-			
+
+				cubeMotor.rotate(45);			
+				if( i%2 == 0){
+					colorMotor.goCorner();
+					sample = opticSensor.readColor();
+					f.setCorner((i-1)/2, sampleToCase(sample));
+				
+				}
+				else{
+					colorMotor.goOuterFromCorner();
+					sample = opticSensor.readColor();
+					f.setMiddle((i-1)/2, sampleToCase(sample));
+				}	
+			}			
 			System.out.println("Couleur : " + sampleToString(sample));
 			
 			try {

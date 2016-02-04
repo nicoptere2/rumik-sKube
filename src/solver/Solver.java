@@ -106,7 +106,7 @@ public class Solver {
 	}
 	
 	private static boolean isSolved(Kube c){//TODO: à déplacer dans "Kube" (putain mais quel nom débile bordel), mais pour l'instant il reste là parce que je sens poindre les conflits git :)
-		return false;//TODO: TODOTDODTOTODTODTODOTDOTDOTDTD
+		return false;//TODOTODOTDODTOTODTODTODOTDOTDOTDTD
 	}
 	
 	
